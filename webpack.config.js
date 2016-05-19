@@ -81,43 +81,26 @@ module.exports = function makeWebpackConfig() {
     config.module = {
         preLoaders: [],
         loaders: [{
-            // JS LOADER
-            // Reference: https://github.com/babel/babel-loader
-            // Transpile .js files using babel-loader
-            // Compiles ES6 and ES7 into ES5 code
             test: /\.js$/,
             loader: 'babel',
             exclude: /node_modules/
         }, {
-            // CSS LOADER
-            // Reference: https://github.com/webpack/css-loader
-            // Allow loading css through js
-            //
-            // Reference: https://github.com/postcss/postcss-loader
-            // Postprocess your css with PostCSS plugins
             test: /\.css$/,
-            // Reference: https://github.com/webpack/extract-text-webpack-plugin
-            // Extract css files in production builds
-            //
-            // Reference: https://github.com/webpack/style-loader
-            // Use style-loader in development.
             loader: isTest ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
         }, {
             test: /\.(scss|sass)$/,
-            loader: isTest ? null : ExtractTextPlugin.extract('style-loader', stylesLoader)
+            loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', stylesLoader)
         }, {
-            // ASSET LOADER
-            // Reference: https://github.com/webpack/file-loader
-            // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
-            // Rename the file using the asset hash
-            // Pass along the updated reference to your code
-            // You can add here any file extension you want to get copied to your output
-            test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-            loader: 'file'
+            test: /\.(woff2|woff|ttf|eot)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loaders: [
+                "url-loader?name=assets/fonts/[name]_[hash].[ext]"
+            ]
         }, {
-            // HTML LOADER
-            // Reference: https://github.com/webpack/raw-loader
-            // Allow loading html through js
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loaders: [
+                'url-loader?name=assets/images/[name]_[hash].[ext]&limit=10000'
+            ]
+        }, {
             test: /\.html$/,
             loader: 'raw'
         }]

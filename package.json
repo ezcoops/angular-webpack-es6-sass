@@ -11,14 +11,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Foxandxss/angular-webpack-workflow.git"
+        "url": "https://github.com/ezcoops/angular-webpack-es6-sass.git"
     },
-    "author": "Jesus Rodriguez",
+    "author": "Eiran Cooper",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/Foxandxss/angular-webpack-workflow/issues"
+        "url": "https://github.com/ezcoops/angular-webpack-es6-sass/issues"
     },
-    "homepage": "https://github.com/Foxandxss/angular-webpack-workflow",
+    "homepage": "https://github.com/ezcoops/angular-webpack-es6-sass",
     "dependencies": {
         "angular": "^1.5.0",
         "angular-ui-router": "^0.3.0",
@@ -53,6 +53,8 @@
         "raw-loader": "^0.5.1",
         "rimraf": "^2.5.1",
         "style-loader": "^0.13.0",
+        "url": "^0.11.0",
+        "url-loader": "^0.5.6",
         "webpack": "^1.12.13",
         "webpack-dev-server": "^1.14.1"
     }
